@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{2EB7DCEE-D92A-4AB2-D5D5-C3ACE493B8C5}") = "BobaPop", "Assembly-CSharp.csproj", "{40D977F3-BFAD-34C8-A27F-C4AD161B0A6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40D977F3-BFAD-34C8-A27F-C4AD161B0A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D977F3-BFAD-34C8-A27F-C4AD161B0A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D977F3-BFAD-34C8-A27F-C4AD161B0A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D977F3-BFAD-34C8-A27F-C4AD161B0A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
