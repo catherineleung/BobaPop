@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
@@ -17,8 +17,7 @@ public class Timer : MonoBehaviour {
         }
         else
         {
-            //right now, just stopped at 0; want to go to "game over" screen once the timer reaches 0
-            TimeDisplay.text = "" + (int)timeRemains;
+            SceneManager.LoadScene(2);
         }
         
 	}
