@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Gameplay : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class Gameplay : MonoBehaviour
 
     // keeps all created bobas
     private GameObject bobaPlace;
+
+    // Text used for interacting with the score
+    public Text scoreDisplay;
+
+    // Actually keeping track of score; initial score is 0
+    public int score = 0;
 
 
     // Use this for initialization
@@ -46,17 +53,6 @@ public class Gameplay : MonoBehaviour
         }
 
     }
-
-    //For actually dropping new boba
-
-    /*IEnumerator addBoba()
-    {
-        //TODO: Fix later to stop dropping after game ends
-        while (true)
-        {
-            InvokeRepeating("addBobaHelper", 5, 5F);
-        }
-    }*/
 
 
     /********* helper for conditions for combos *********/
@@ -130,7 +126,10 @@ public class Gameplay : MonoBehaviour
                 // go through every boba in combo and delete them
                 foreach (BobaCharacter bobachar in comboList)
                 {
+                    //multiply the amount in combo * 100
+                    score += (comboList.Count * 100);
                     Destroy(bobachar.gameObject);
+                    scoreDisplay.text = "" + score;
                 }
             }
             else
