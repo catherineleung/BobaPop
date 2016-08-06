@@ -29,6 +29,7 @@ public class Gameplay : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        bobaPlace = new GameObject("BobaPlace");
 
         comboList = new ArrayList();
 
@@ -37,7 +38,7 @@ public class Gameplay : MonoBehaviour
             // creates a new instance of prefab object obtained from charList array
             // Random.Range gets random x value from -2.6f to 2.6f
             GameObject instance = Instantiate(charList[Random.Range(0, charList.Length)], new Vector3(Random.Range(-2.6f, 2.6f), 7.0f, -1.0f), Quaternion.identity) as GameObject;
-
+            instance.transform.SetParent(bobaPlace.transform);
         }
 
         InvokeRepeating("addBobaHelper", 0, 6F);
@@ -86,7 +87,7 @@ public class Gameplay : MonoBehaviour
     {
         foreach (BobaCharacter b in bobaPlace.GetComponentsInChildren<BobaCharacter>())
         {
-            if (b.Check(b) && !comboList.Contains(b))
+            if (b.Check(bobachar) && !comboList.Contains(b))
             {
                 b.SetHighlight(true);
                 HighlightAllowedBobas(b);
@@ -97,6 +98,8 @@ public class Gameplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (Input.GetMouseButtonDown(0))
         {
             // touch began
@@ -128,7 +131,11 @@ public class Gameplay : MonoBehaviour
                 {
                     //multiply the amount in combo * 100
                     score += (comboList.Count * 100);
-                    Destroy(bobachar.gameObject);
+                    if (bobachar.gameObject != null)
+                    {
+                        Destroy(bobachar.gameObject);
+                    }
+                    
                     scoreDisplay.text = "" + score;
                 }
             }
@@ -197,10 +204,11 @@ public class Gameplay : MonoBehaviour
             }
         }
 
-        foreach (BobaCharacter bobachar in bobaPlace.GetComponentsInChildren<BobaCharacter>())
+        foreach (BobaCharacter b in bobaPlace.GetComponentsInChildren<BobaCharacter>())
         {
-            bobachar.SetHighlight(false);
+            b.SetHighlight(false);
         }
+
 
         if (comboList.Count > 0)
         {
