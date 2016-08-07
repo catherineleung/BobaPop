@@ -16,18 +16,25 @@ public class PauseMenu : MonoBehaviour {
 
     public void Pause()
     {
-        isPaused = !isPaused;
+        //isPaused = !isPaused;
 
-        if (isPaused)
-        {
+        //if (isPaused)
+        //{
             Time.timeScale = 0;
             pauseMenuCanvas.SetActive(true);
-        }
+        /*}
         else {
             Time.timeScale = 1;
             pauseMenuCanvas.SetActive(false);
-        }
+        }*/
 
+    }
+
+    public void Resume()
+    {
+        //isPaused = !isPaused;
+        pauseMenuCanvas.SetActive(false);
+        Time.timeScale = 1;
     }
 
 
