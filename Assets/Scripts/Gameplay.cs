@@ -162,10 +162,6 @@ public class Gameplay : MonoBehaviour
                     {
                         Destroy(bobachar.gameObject);
                     }
-                    
-
-                    score += (comboList.Count * 30);
-                    Destroy(bobachar.gameObject);
 
                     scoreDisplay.text = "" + score;
                 }
