@@ -24,7 +24,7 @@ public class Gameplay : MonoBehaviour
     public Text scoreDisplay;
 
     // Actually keeping track of score; initial score is 0
-    public int score = 0;
+    public static int score = 0;
 
     //check to see if the bobas land outside the cup. True if there is a boba outside, false otherwise
     /*public bool outside;
@@ -55,6 +55,7 @@ public class Gameplay : MonoBehaviour
         InvokeRepeating("addBobaHelper", 0, 6F);
 
     }
+
 
     //Helper for dropping new boba during gameplay
     void addBobaHelper()
@@ -164,6 +165,7 @@ public class Gameplay : MonoBehaviour
                     }
 
                     scoreDisplay.text = "" + score;
+                    Exit.scoreNum = score;
                 }
             }
             else
