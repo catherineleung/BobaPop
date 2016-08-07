@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Gameplay : MonoBehaviour
 {
@@ -25,6 +26,16 @@ public class Gameplay : MonoBehaviour
     // Actually keeping track of score; initial score is 0
     public int score = 0;
 
+    //check to see if the bobas land outside the cup. True if there is a boba outside, false otherwise
+    /*public bool outside;
+
+    //y-position of the upper boundary of the cup
+    public static float boundaryY = GameObject.FindGameObjectWithTag("boundary").transform.position.y;
+
+    //x-position of the upper boundary of the cup
+    public static float boundaryX = GameObject.FindGameObjectWithTag("boundary").transform.position.x;*/
+
+    //width of the upper boundary of the cup
 
     // Use this for initialization
     void Start()
@@ -94,6 +105,21 @@ public class Gameplay : MonoBehaviour
             }
         }
     }
+    
+    //sets variable "outside" to true/false depending on whether this finds that a boba has exceeded cup boundaries
+    /*void IsBobaOutside(GameObject[] bobas)
+    { 
+        //iterates over all boba to see if it had touched the top
+        for (int i = 0; i < bobas.Length; i++)
+        {
+            //if it touches anywhere between -4 and 4 on the x-axis, then return true
+            float bobaY = bobas[i].transform.position.y;
+            if (bobaY == boundaryY)
+            {
+                outside = true;
+            }
+        }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -130,12 +156,17 @@ public class Gameplay : MonoBehaviour
                 foreach (BobaCharacter bobachar in comboList)
                 {
                     //multiply the amount in combo * 100
+
                     score += (comboList.Count * 100);
                     if (bobachar.gameObject != null)
                     {
                         Destroy(bobachar.gameObject);
                     }
                     
+
+                    score += (comboList.Count * 30);
+                    Destroy(bobachar.gameObject);
+
                     scoreDisplay.text = "" + score;
                 }
             }
@@ -214,6 +245,12 @@ public class Gameplay : MonoBehaviour
         {
             HighlightAllowedBobas(GetLastBoba());
         }
+
+        /*if (outside)
+        {
+            SceneManager.LoadScene(2);
+        }*/
+
     }
 
 }
