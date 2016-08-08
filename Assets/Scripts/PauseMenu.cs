@@ -51,5 +51,18 @@ public class PauseMenu : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+        pauseMenuCanvas.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+        pauseMenuCanvas.SetActive(false);
+        Time.timeScale = 1;
+    }
 
 }
