@@ -165,7 +165,10 @@ public class Gameplay : MonoBehaviour
                     }
 
                     scoreDisplay.text = "" + score;
+
+                    // updates score for exit menu and pause menu
                     Exit.scoreNum = score;
+                    PauseMenu.scoreNum = score;
                 }
             }
             else
