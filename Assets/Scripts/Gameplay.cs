@@ -9,6 +9,8 @@ public class Gameplay : MonoBehaviour
     // holds different GameObjects
     public GameObject[] charList;
 
+	public GameObject topCollider = GameObject.FindGameObjectWithTag ("boundary");
+
     // max numbers of characters
     public int maxCharCount = 5;
 
@@ -27,7 +29,7 @@ public class Gameplay : MonoBehaviour
     public static int score = 0;
 
     //check to see if the bobas land outside the cup. True if there is a boba outside, false otherwise
-    public bool outside = false;
+	public bool outside = false;
 
     //y-position of the upper boundary of the cup
     public static float boundaryY = 4;
@@ -44,6 +46,10 @@ public class Gameplay : MonoBehaviour
 
         comboList = new ArrayList();
 
+
+
+		topCollider.SetActive (false);
+
         for (int i = 0; i < maxCharCount; i++)
         {
             // creates a new instance of prefab object obtained from charList array
@@ -51,6 +57,7 @@ public class Gameplay : MonoBehaviour
             GameObject instance = Instantiate(charList[Random.Range(0, charList.Length)], new Vector3(Random.Range(-2.6f, 2.6f), 7.0f, -1.0f), Quaternion.identity) as GameObject;
             instance.transform.SetParent(bobaPlace.transform);
         }
+
         
         InvokeRepeating("addBobaHelper", 0, 6F);
         InvokeRepeating("IsBobaOutside", 2, 5F);
@@ -61,6 +68,7 @@ public class Gameplay : MonoBehaviour
     //Helper for dropping new boba during gameplay
     void addBobaHelper()
     {
+
         for (int i = 0; i < 10; i++)
         {
             GameObject instance = Instantiate(charList[Random.Range(0, charList.Length)], new Vector3(Random.Range(-2.6f, 2.6f), 7.0f, -1.0f), Quaternion.identity) as GameObject;
