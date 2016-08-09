@@ -27,13 +27,13 @@ public class Gameplay : MonoBehaviour
     public static int score = 0;
 
     //check to see if the bobas land outside the cup. True if there is a boba outside, false otherwise
-    /*public bool outside;
+    public bool outside = false;
 
     //y-position of the upper boundary of the cup
-    public static float boundaryY = GameObject.FindGameObjectWithTag("boundary").transform.position.y;
+    public static float boundaryY = 4;
 
     //x-position of the upper boundary of the cup
-    public static float boundaryX = GameObject.FindGameObjectWithTag("boundary").transform.position.x;*/
+    public static float boundaryX;// = GameObject.FindGameObjectWithTag("boundary").transform.position.x;
 
     //width of the upper boundary of the cup
 
@@ -51,8 +51,9 @@ public class Gameplay : MonoBehaviour
             GameObject instance = Instantiate(charList[Random.Range(0, charList.Length)], new Vector3(Random.Range(-2.6f, 2.6f), 7.0f, -1.0f), Quaternion.identity) as GameObject;
             instance.transform.SetParent(bobaPlace.transform);
         }
-
+        
         InvokeRepeating("addBobaHelper", 0, 6F);
+        InvokeRepeating("IsBobaOutside", 2, 5F);
 
     }
 
@@ -67,6 +68,10 @@ public class Gameplay : MonoBehaviour
 
     }
 
+    void setOutsideFalse()
+    {
+        outside = false;
+    }
 
     /********* helper for conditions for combos *********/
 
@@ -108,19 +113,23 @@ public class Gameplay : MonoBehaviour
     }
     
     //sets variable "outside" to true/false depending on whether this finds that a boba has exceeded cup boundaries
-    /*void IsBobaOutside(GameObject[] bobas)
-    { 
+    void IsBobaOutside()
+    {
         //iterates over all boba to see if it had touched the top
+        GameObject[] bobas = charList;
+
         for (int i = 0; i < bobas.Length; i++)
         {
             //if it touches anywhere between -4 and 4 on the x-axis, then return true
             float bobaY = bobas[i].transform.position.y;
-            if (bobaY == boundaryY)
+            if (bobaY > boundaryY)
             {
                 outside = true;
+                Debug.Log("HEYYYYYYYYYYYYYYYYYYY!!!!!!!!!!!");
+            
             }
         }
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
@@ -246,6 +255,10 @@ public class Gameplay : MonoBehaviour
         {
             HighlightAllowedBobas(GetLastBoba());
         }
+
+        
+
+        
 
         /*if (outside)
         {
