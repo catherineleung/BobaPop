@@ -9,8 +9,6 @@ public class Gameplay : MonoBehaviour
     // holds different GameObjects
     public GameObject[] charList;
 
-	public GameObject topCollider = GameObject.FindGameObjectWithTag ("boundary");
-
     // max numbers of characters
     public int maxCharCount = 5;
 
@@ -46,9 +44,8 @@ public class Gameplay : MonoBehaviour
 
         comboList = new ArrayList();
 
-
-
-		topCollider.SetActive (false);
+        
+        
 
         for (int i = 0; i < maxCharCount; i++)
         {
@@ -68,7 +65,6 @@ public class Gameplay : MonoBehaviour
     //Helper for dropping new boba during gameplay
     void addBobaHelper()
     {
-
         for (int i = 0; i < 10; i++)
         {
             GameObject instance = Instantiate(charList[Random.Range(0, charList.Length)], new Vector3(Random.Range(-2.6f, 2.6f), 7.0f, -1.0f), Quaternion.identity) as GameObject;

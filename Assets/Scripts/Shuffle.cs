@@ -6,14 +6,20 @@ public class Shuffle : MonoBehaviour
 
     public GameObject[] charList;
 
-	public GameObject topCollider;
+    public GameObject topCollider = GameObject.FindGameObjectWithTag("boundary");
+
 
     // Use this for initialization
     public void ShuffleBobas()
     {
+        topCollider.SetActive(true);
+
         charList = GameObject.FindGameObjectsWithTag("bobacharacter");
 		Rigidbody2D rb;
 
+        
+
+        
 
         for (int i = 0; i < charList.Length; i++)
         {
