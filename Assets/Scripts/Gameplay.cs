@@ -35,11 +35,16 @@ public class Gameplay : MonoBehaviour
     //x-position of the upper boundary of the cup
     public static float boundaryX;// = GameObject.FindGameObjectWithTag("boundary").transform.position.x;
 
+    public GameObject topCollider;
+
     //width of the upper boundary of the cup
 
     // Use this for initialization
     void Start()
     {
+        topCollider = GameObject.FindGameObjectWithTag("boundary");
+        
+
         bobaPlace = new GameObject("BobaPlace");
 
         comboList = new ArrayList();

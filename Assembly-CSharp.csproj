@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackgroundAnimation.cs" />
      <Compile Include="Assets\Scripts\BobaCharacter.cs" />
+     <Compile Include="Assets\Scripts\Collider.cs" />
      <Compile Include="Assets\Scripts\Exit.cs" />
      <Compile Include="Assets\Scripts\Gameplay.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
